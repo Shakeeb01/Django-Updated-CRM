@@ -2,7 +2,49 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-<h1>Hello World</h1>
+<div class="container mt-4">
+  <h1 class="mb-3">All Records</h1>
+  <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+          <thead class="table-dark text-center">
+              <tr>
+                  <th>i d</th>
+                  <th>Created At</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th>Address</th>
+                  <th>City</th>
+                  <th>State</th>
+                  <th>Zip Code</th>
+              </tr>
+          </thead>
+          <tbody>
+                            
+                {% if records %}
+                  {% for record in records %}
+                    <tr style="cursor: pointer;">
+                      <td><a href=""> {{record.id}} </a></td>
+                      <td>{{record.created_at}}</td>
+                      <td>{{ record.first_name }} {{ record.last_name }}</td>
+                      <td>{{record.email}}</td>
+                      <td>{{record.phone}}</td>
+                      <td>{{record.address}}</td>
+                      <td>{{record.city}}</td>
+                      <td>{{record.state}}</td>
+                      <td>{{record.zipcode}}</td>
+                    </tr>
+                  {% endfor %}
+                {% endif %}
+              
+             
+          </tbody>
+      </table>
+  </div>
+</div>
+
+
+
 {% else %}
 
 <div class="col-md-6 offset-md-3">
